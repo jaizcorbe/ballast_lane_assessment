@@ -1,7 +1,8 @@
-package com.jaizcorbe.ballast_lane_assessment.service;
+package com.jaizcorbe.ballast_lane_assessment.service.validator;
 
 import com.jaizcorbe.ballast_lane_assessment.model.Student;
 import com.jaizcorbe.ballast_lane_assessment.repository.StudentRepository;
+import com.jaizcorbe.ballast_lane_assessment.service.exception.BusinessException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +22,7 @@ public class StudentValidator {
   private boolean isUniqueEmail(Student student) throws BusinessException {
     Optional<Student> studentOpt = repository.findByEmail(student.getEmail());
     if(studentOpt.isPresent()) {
-      throw new BusinessException("Already exists a Student for email %s".formatted(student.getEmail()));
+      throw new BusinessException("Student already exists for email %s".formatted(student.getEmail()));
     }
     return true;
   }

@@ -1,4 +1,4 @@
-package com.jaizcorbe.ballast_lane_assessment.service;
+package com.jaizcorbe.ballast_lane_assessment.service.exception;
 
 public class BusinessException extends Exception {
 
