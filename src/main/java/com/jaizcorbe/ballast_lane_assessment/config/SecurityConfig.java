@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
 @EnableWebSecurity
@@ -14,10 +16,15 @@ public class SecurityConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http
-      .authorizeHttpRequests(auth -> {
-        auth.requestMatchers("/resource").permitAll();
-        auth.anyRequest().authenticated();
-      })
+      .csrf(CsrfConfigurer::disable)
+      .authorizeHttpRequests(auth ->
+        auth
+          .requestMatchers("/error").permitAll()
+          .requestMatchers("/api/**").permitAll()
+          .requestMatchers("/resource").permitAll()
+          .anyRequest().authenticated()
+      )
+      .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
       .httpBasic(Customizer.withDefaults())
       .build();
   }
