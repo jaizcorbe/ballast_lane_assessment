@@ -19,10 +19,7 @@ public class SecurityConfig {
       .csrf(CsrfConfigurer::disable)
       .authorizeHttpRequests(auth ->
         auth
-          .requestMatchers("/error").permitAll()
-          .requestMatchers("/api/**").permitAll()
-          .requestMatchers("/resource").permitAll()
-          .anyRequest().authenticated()
+          .anyRequest().permitAll()
       )
       .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
       .httpBasic(Customizer.withDefaults())
