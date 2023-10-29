@@ -1,0 +1,10 @@
+<h2>{{user?.email}}</h2>
+<h2> id: {{user?.id}}</h2>
+<h2> admin status {{user?.admin}}</h2>
+
+<div>
+    <button *ngIf="user?.admin" class="button">admin course</button>
+    <button class="button">log work</button>
+</div>
+
+<button class="button" (click)="logout()">logout</button>

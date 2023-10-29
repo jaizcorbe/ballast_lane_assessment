@@ -1,16 +1,44 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { Observable, tap } from 'rxjs'
+import { Router } from '@angular/router';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentsPlatformService {
-  private apiUrl = "http://localhost:8080/api/student";
+  private apiBaseUrl = "http://localhost:8080/api";
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
-  constructor(private http: HttpClient) { }
+  private loggedUser: User | undefined;
+
+  constructor(
+    private http: HttpClient,
+    private router: Router) { }
 
   createStudent(studentData: any): Observable<any> {
-    return this.http.post(this.apiUrl, studentData)
+    const url = `${this.apiBaseUrl}/student`
+    return this.http.post(url, studentData)
+  }
+
+  login(userEmail: string): Observable<User> {
+    const loginRequest = {
+      email: userEmail
+    }
+    const url = `${this.apiBaseUrl}/auth/login`
+    return this.http.post<User>(url, loginRequest, this.httpOptions).pipe(
+      tap((newUser: User) => this.loggedUser = newUser)
+    );
+  }
+
+  logout() {
+    this.loggedUser = undefined;
+  }
+
+  getLoggedUser() {
+    return this.loggedUser;
   }
 }

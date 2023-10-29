@@ -20,6 +20,12 @@ public class StudentService {
     return repository.findById(id)
       .orElseThrow(() -> new NotFoundException("No Student found for id: %s".formatted(id)));
   }
+
+  public Student find(String email) throws NotFoundException {
+    return repository.findByEmail(email)
+      .orElseThrow(() -> new NotFoundException("No Student found for email: %s".formatted(email)));
+  }
+
   public Student create(Student student) throws BusinessException {
     validator.isValid(student);
     try {
