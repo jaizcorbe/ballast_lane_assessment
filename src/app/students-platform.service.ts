@@ -35,6 +35,12 @@ export class StudentsPlatformService {
     return this.http.get<Course[]>(url);
   }
 
+  getCourse(id: number): Observable<Course> {
+    const url = `${this.apiBaseUrl}/course/${id}`;
+    return this.http.get<Course>(url).pipe(
+      tap(_ => console.info(`fetched hero id=${id}`)));
+  }
+
 
   login(userEmail: string): Observable<User> {
     const loginRequest = {

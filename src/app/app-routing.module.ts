@@ -5,6 +5,7 @@ import { CreateStudentComponent } from './create_student/create_student.componen
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CoursesComponent } from './courses/courses.component';
 import { StudentCoursesComponent } from './student-courses/student-courses.component';
+import { CourseRegistrationComponent } from './course-registration/course-registration.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent},
   { path: 'courses', component: CoursesComponent},
   { path: 'student_courses', component: StudentCoursesComponent },
+  { path: 'course_registration/:id', component: CourseRegistrationComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 

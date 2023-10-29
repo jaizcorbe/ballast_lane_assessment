@@ -8,13 +8,10 @@
         </ul>
     </div>
     <div class="vertical-area">
-        <h2>Register into new Course</h2>
-        <ul>
-            <li *ngFor="let course of allCourses">
-                <span>id: {{course.id}} </span>
-                <span>name: {{course.name}}</span>
-            </li>
-        </ul>
+        <app-item-list 
+            title='Register into new Course' 
+            [items]=allCourses
+            itemDetailPath="/course_registration"></app-item-list>
     </div>
 </div>
 <button type="button" (click)="goBack()">Cancel</button>

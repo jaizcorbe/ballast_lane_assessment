@@ -14,7 +14,7 @@ public class CourseService {
   private CourseRepository repository;
   private CourseValidator validator;
 
-  public Course find(Long id) throws BusinessException {
+  public Course find(Long id) throws NotFoundException {
     return repository.findById(id)
       .orElseThrow(() -> new NotFoundException("Course not found for id %s".formatted(id)));
   }

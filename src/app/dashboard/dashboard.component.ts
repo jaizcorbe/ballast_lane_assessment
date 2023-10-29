@@ -12,6 +12,7 @@ export class DashboardComponent {
   constructor(
     private platformService: StudentsPlatformService,
     private location: Location) {}
+
   user: User | undefined
 
   ngOnInit() {

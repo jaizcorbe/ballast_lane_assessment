@@ -5,6 +5,7 @@ import com.jaizcorbe.ballast_lane_assessment.service.CourseService;
 import com.jaizcorbe.ballast_lane_assessment.service.UserAccessValidator;
 import com.jaizcorbe.ballast_lane_assessment.service.exception.AccessPermissionException;
 import com.jaizcorbe.ballast_lane_assessment.service.exception.BusinessException;
+import com.jaizcorbe.ballast_lane_assessment.service.exception.NotFoundException;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,6 +29,15 @@ public class CourseController {
     }
     catch(BusinessException e) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+    }
+  }
+
+  @GetMapping("/{courseId}")
+  public Course getCourse(@PathVariable Long courseId) {
+    try {
+      return this.service.find(courseId);
+    } catch (NotFoundException e) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
     }
   }
 
