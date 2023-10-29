@@ -12,6 +12,7 @@ import { CoursesComponent } from './courses/courses.component';
 import { StudentCoursesComponent } from './student-courses/student-courses.component';
 import { ItemListComponent } from './item-list/item-list.component';
 import { CourseRegistrationComponent } from './course-registration/course-registration.component';
+import { RegistrationWorklogComponent } from './registration-worklog/registration-worklog.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CourseRegistrationComponent } from './course-registration/course-regist
     CoursesComponent,
     StudentCoursesComponent,
     ItemListComponent,
-    CourseRegistrationComponent
+    CourseRegistrationComponent,
+    RegistrationWorklogComponent
 
   ],
   imports: [

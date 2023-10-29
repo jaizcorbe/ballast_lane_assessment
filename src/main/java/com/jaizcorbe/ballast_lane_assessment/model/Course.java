@@ -10,7 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.time.Period;
+import java.time.temporal.ChronoUnit;
 
 import static com.jaizcorbe.ballast_lane_assessment.service.validator.CourseValidator.MAX_COURSE_DURATION;
 
@@ -33,10 +33,10 @@ public class Course {
   private LocalDate startDate;
 
   public boolean isCompleted() {
-    if(this.startDate == null) {
-      return true;
-    }
-    int ageInMonths = Period.between(this.startDate, LocalDate.now()).getMonths();
-    return  ageInMonths > MAX_COURSE_DURATION;
+    return LocalDate.now().isAfter(this.getEndDate());
+  }
+
+  public LocalDate getEndDate() {
+    return this.getStartDate().plus(MAX_COURSE_DURATION, ChronoUnit.MONTHS);
   }
 }

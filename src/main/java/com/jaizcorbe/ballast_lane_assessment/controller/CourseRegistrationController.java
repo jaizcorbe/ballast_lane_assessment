@@ -33,6 +33,23 @@ public class CourseRegistrationController {
     } catch (NotFoundException e) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
     }
+  }
 
+  @GetMapping("/student/{studentId}")
+  public Iterable<CourseRegistration> getAllStudentRegistrations(@PathVariable Long studentId) {
+    try {
+      return service.findRegistrations(studentId, true);
+    } catch (BusinessException e) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+    }
+  }
+
+  @GetMapping("/{registrationId}")
+  public CourseRegistration get(@PathVariable Long registrationId) {
+    try {
+      return service.find(registrationId);
+    } catch (NotFoundException e) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+    }
   }
 }

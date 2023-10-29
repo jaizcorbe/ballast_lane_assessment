@@ -13,6 +13,7 @@ export class StudentCoursesComponent {
   user: User | undefined
 
   allCourses: Course[] = [];
+  allRegistrations: any[] = [];
 
   constructor(
     private platformService: StudentsPlatformService,
@@ -22,6 +23,10 @@ export class StudentCoursesComponent {
     this.platformService.getAllCourses().subscribe(courses => this.allCourses = courses);
   }
 
+  getAllRegistrations() {
+    this.platformService.getAllRegistrations().subscribe(registrations => this.allRegistrations = registrations);
+  }
+
   goBack(): void {
     this.location.back();
   }
@@ -29,5 +34,10 @@ export class StudentCoursesComponent {
   ngOnInit() {
     this.user=this.platformService.getLoggedUser();
     this.getAllCourses();
+    this.getAllRegistrations();
+  }
+
+  getRegistrationDescription(registration: any) {
+    return `course: ${registration?.course?.name} student: ${registration?.student?.email}`
   }
 }

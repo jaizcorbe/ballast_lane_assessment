@@ -43,7 +43,8 @@ public class CourseRegistrationService {
     return repository.save(registration);
   }
 
-  public List<CourseRegistration> findRegistrations(Student student, boolean active) {
+  public List<CourseRegistration> findRegistrations(Long studentId, boolean active) throws BusinessException {
+    Student student = studentService.find(studentId);
     return repository.findAllByStudentAndActive(student, active);
   }
 }

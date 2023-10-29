@@ -38,7 +38,25 @@ export class StudentsPlatformService {
   getCourse(id: number): Observable<Course> {
     const url = `${this.apiBaseUrl}/course/${id}`;
     return this.http.get<Course>(url).pipe(
-      tap(_ => console.info(`fetched hero id=${id}`)));
+      tap(_ => console.info(`fetched course id=${id}`)));
+  }
+
+  getRegistration(id: number): Observable<any> {
+    const url = `${this.apiBaseUrl}/course_registration/${id}`;
+    return this.http.get(url).pipe(
+      tap(_ => console.info(`fetched course registration id=${id}`)));
+  }
+
+  registerWorkLog(workLog: any): Observable<any> {
+    const url = `${this.apiBaseUrl}/work_log`;
+    return this.http.post(url, workLog).pipe(
+      tap(_ => console.info("registering worklog")));
+  }
+
+  getAllWorkLogs(): Observable<any> {
+    const url = `${this.apiBaseUrl}/work_log/student/${this.loggedUser?.id}`;
+    return this.http.get(url).pipe(
+      tap(_ => console.info(`fetched student course worklog`)));
   }
 
   registerInCourse(request: any): Observable<any> {
@@ -46,6 +64,11 @@ export class StudentsPlatformService {
     return this.http.post<any>(url, request)
   }
 
+  getAllRegistrations(): Observable<any> {
+    const url = `${this.apiBaseUrl}/course_registration/student/${this.loggedUser?.id}`;
+    return this.http.get<any>(url).pipe(
+      tap(_ => console.info(`fetched student active registrations`)));
+  }
 
   login(userEmail: string): Observable<User> {
     const loginRequest = {

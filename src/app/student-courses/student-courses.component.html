@@ -1,11 +1,12 @@
 <h2>Student {{this?.user?.email}}</h2>
 <div class="two-lists-container">
     <div class="vertical-area">
-        <h2>Student Active Courses</h2>
-        <ul>
-            <li>peep</li>
-            <li>pip</li>
-        </ul>
+        <app-item-list
+            title="Student Registered Courses"
+            [items]=allRegistrations
+            [itemDescription]=getRegistrationDescription
+            itemDetailPath="/registration"
+        ></app-item-list>
     </div>
     <div class="vertical-area">
         <app-item-list 
