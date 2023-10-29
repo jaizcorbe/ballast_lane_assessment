@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable, tap } from 'rxjs'
 import { Router } from '@angular/router';
 import { User } from './user';
+import { Course } from './course';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,11 @@ export class StudentsPlatformService {
   createStudent(studentData: any): Observable<any> {
     const url = `${this.apiBaseUrl}/student`
     return this.http.post(url, studentData)
+  }
+
+  createCourse(courseData: Course): Observable<Course> {
+    const url = `${this.apiBaseUrl}/course?userId=${this.loggedUser?.id}`
+    return this.http.post<Course>(url, courseData);
   }
 
   login(userEmail: string): Observable<User> {

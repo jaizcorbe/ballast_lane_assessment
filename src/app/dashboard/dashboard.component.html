@@ -3,7 +3,7 @@
 <h2> admin status {{user?.admin}}</h2>
 
 <div>
-    <button *ngIf="user?.admin" class="button">admin course</button>
+    <a *ngIf="user?.admin" class="button" routerLink="/courses">admin course</a>
     <button class="button">log work</button>
 </div>
 
