@@ -3,6 +3,7 @@
 * This project has integrated the springboot service which also serves the static content with the angular front end
 * To run the service to the project folder and run with
 ```mvn spring-boot:run```
+* When building the project with mvn e.g ```mvn package``` or ```mvn install``` a plugin takes care to build the angular project and locate the files in the right position in the springboot artifact
 
 ## Project Use
 * Only students can be created from the UI.
