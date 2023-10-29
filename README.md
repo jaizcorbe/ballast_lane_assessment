@@ -13,6 +13,14 @@
   * Student user: student@ballastlane.com
 * The admin APIs receive the admin id to secure its access
 * The UI hides the admin functionality when a Student is logged in
+* The requested validations are enforced by the API
+  * Workload minutes must be on 30 minutes periods (e.g. 30, 60, 90, etc)
+  * Workload date for a Course registration must be before the Course end date (6 months after course date start)
+  * Course name must be unique in the db
+  * Student email must be unique in the db
+  * A Student can only register at most at 3 active courses (now is before course's end date)
+  * A Student can register to a course more than one time
+  * A Student can only register to an active course (now is before course's end date)
 
 ## missing features from assessment spec
 * Task Category is implemented as a java enum instead of a lookup table
