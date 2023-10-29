@@ -30,6 +30,12 @@ export class StudentsPlatformService {
     return this.http.post<Course>(url, courseData);
   }
 
+  getAllCourses(): Observable<Course[]> {
+    const url = `${this.apiBaseUrl}/course`
+    return this.http.get<Course[]>(url);
+  }
+
+
   login(userEmail: string): Observable<User> {
     const loginRequest = {
       email: userEmail

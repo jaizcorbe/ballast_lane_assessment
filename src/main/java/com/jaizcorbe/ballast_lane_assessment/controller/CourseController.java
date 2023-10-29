@@ -1,10 +1,10 @@
 package com.jaizcorbe.ballast_lane_assessment.controller;
 
 import com.jaizcorbe.ballast_lane_assessment.model.Course;
+import com.jaizcorbe.ballast_lane_assessment.service.CourseService;
 import com.jaizcorbe.ballast_lane_assessment.service.UserAccessValidator;
 import com.jaizcorbe.ballast_lane_assessment.service.exception.AccessPermissionException;
 import com.jaizcorbe.ballast_lane_assessment.service.exception.BusinessException;
-import com.jaizcorbe.ballast_lane_assessment.service.CourseService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,5 +29,10 @@ public class CourseController {
     catch(BusinessException e) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
     }
+  }
+
+  @GetMapping
+  public Iterable<Course> getAllCourses() {
+    return this.service.findAll();
   }
 }

@@ -10,8 +10,10 @@
     <div class="vertical-area">
         <h2>Register into new Course</h2>
         <ul>
-            <li>peep</li>
-            <li>pip</li>
+            <li *ngFor="let course of allCourses">
+                <span>id: {{course.id}} </span>
+                <span>name: {{course.name}}</span>
+            </li>
         </ul>
     </div>
 </div>

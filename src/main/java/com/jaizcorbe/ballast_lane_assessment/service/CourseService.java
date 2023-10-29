@@ -27,4 +27,8 @@ public class CourseService {
       throw new BusinessException("Unexpected error while creating course %s".formatted(course.getName()),e);
     }
   }
+
+  public Iterable<Course> findAll() {
+    return repository.findAll();
+  }
 }
