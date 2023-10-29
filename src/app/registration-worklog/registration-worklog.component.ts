@@ -46,7 +46,10 @@ export class RegistrationWorklogComponent {
   }
 
   getWorkLogDescription(itemWorklog: any) {
-    return `course: ${itemWorklog?.courseRegistration?.course?.name} student: ${itemWorklog?.courseRegistration?.student?.name} category: ${itemWorklog?.taskCategory} time: ${itemWorklog?.taskMinutes}`  
+    return `course: ${itemWorklog?.courseRegistration?.course?.name} 
+    student: ${itemWorklog?.courseRegistration?.student?.name} 
+    category: ${itemWorklog?.taskCategory} date: ${itemWorklog?.taskDate} 
+    time: ${itemWorklog?.taskMinutes}`  
   }
 
   ngOnInit() {

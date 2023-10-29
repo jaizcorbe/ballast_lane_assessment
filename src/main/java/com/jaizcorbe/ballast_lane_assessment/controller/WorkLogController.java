@@ -47,4 +47,13 @@ public class WorkLogController {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
     }
   }
+
+  @GetMapping("/{workLogId}")
+  public WorkLog find(@PathVariable Long workLogId) {
+    try {
+      return service.find(workLogId);
+    } catch (NotFoundException e) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+    }
+  }
 }

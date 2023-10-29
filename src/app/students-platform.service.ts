@@ -59,6 +59,16 @@ export class StudentsPlatformService {
       tap(_ => console.info(`fetched student course worklog`)));
   }
 
+  getWorklog(id: number): Observable<any> {
+    const url = `${this.apiBaseUrl}/work_log/${id}`;
+    return this.http.get(url);
+  }
+
+  deleteWorklog(id: number): Observable<any> {
+    const url = `${this.apiBaseUrl}/work_log/${id}`;
+    return this.http.delete(url);
+  }
+
   registerInCourse(request: any): Observable<any> {
     const url = `${this.apiBaseUrl}/course_registration`;
     return this.http.post<any>(url, request)
