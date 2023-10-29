@@ -11,6 +11,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @Component
 public class CourseValidator {
+  public static final int MAX_COURSE_DURATION = 6;
   private CourseRepository repository;
 
   public boolean isValid(Course course) throws BusinessException {

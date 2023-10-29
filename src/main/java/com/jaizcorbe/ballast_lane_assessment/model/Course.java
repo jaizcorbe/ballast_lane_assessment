@@ -5,14 +5,18 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.Period;
 
+import static com.jaizcorbe.ballast_lane_assessment.service.validator.CourseValidator.MAX_COURSE_DURATION;
+
 @Entity
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class Course {
@@ -33,6 +37,6 @@ public class Course {
       return true;
     }
     int ageInMonths = Period.between(this.startDate, LocalDate.now()).getMonths();
-    return  ageInMonths > 6;
+    return  ageInMonths > MAX_COURSE_DURATION;
   }
 }
