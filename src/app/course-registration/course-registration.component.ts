@@ -21,6 +21,14 @@ export class CourseRegistrationComponent {
     private location: Location
   ) {}
 
+  registerInCourse() {
+    const request = {
+      studentId: this.loggedUser?.id,
+      courseId: this.selectedCourse?.id
+    }
+    this.platformService.registerInCourse(request).subscribe(_ => this.goBack())
+  }
+
   goBack(): void {
     this.location.back();
   }

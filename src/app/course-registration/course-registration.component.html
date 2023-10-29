@@ -1,2 +1,6 @@
-<h2>Course {{selectedCourse?.name}}</h2>
+<h2>Course: {{selectedCourse?.name}}</h2>
+<h2>Student: {{loggedUser?.email}}</h2>
+<div>
+    <button type="button" (click)="registerInCourse()">Register</button>
+</div>
 <button type="button" (click)="goBack()">Cancel</button>

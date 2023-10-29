@@ -41,6 +41,11 @@ export class StudentsPlatformService {
       tap(_ => console.info(`fetched hero id=${id}`)));
   }
 
+  registerInCourse(request: any): Observable<any> {
+    const url = `${this.apiBaseUrl}/course_registration`;
+    return this.http.post<any>(url, request)
+  }
+
 
   login(userEmail: string): Observable<User> {
     const loginRequest = {
