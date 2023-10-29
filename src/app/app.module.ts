@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { CreateStudentComponent } from './create_student/create_student.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CoursesComponent } from './courses/courses.component';
+import { StudentCoursesComponent } from './student-courses/student-courses.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CoursesComponent } from './courses/courses.component';
     LoginComponent,
     CreateStudentComponent,
     DashboardComponent,
-    CoursesComponent
+    CoursesComponent,
+    StudentCoursesComponent
 
   ],
   imports: [

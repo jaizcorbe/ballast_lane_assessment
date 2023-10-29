@@ -3,8 +3,12 @@
 <h2> admin status {{user?.admin}}</h2>
 
 <div>
-    <a *ngIf="user?.admin" class="button" routerLink="/courses">admin course</a>
-    <button class="button">log work</button>
+    <div>
+        <a *ngIf="user?.admin" class="button" routerLink="/courses">admin courses</a>
+    </div>
+    <div>
+        <a class="button" routerLink="/student_courses">student courses</a>
+    </div>
 </div>
 
 <button class="button" (click)="logout()">logout</button>
